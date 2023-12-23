@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
+import useState from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faEarth, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -11,29 +12,33 @@ import { NAV_LIST } from '~/assets/data';
 
 import Tippy from '@tippyjs/react/headless';
 import NavItem from '~/Component/NavItem';
+import { InputSearch } from './component/InputSearch';
 
 const cx = classNames.bind(styles);
 
-function Header() {
+const Header = () => {
+    const  renderTippy = (dataRender, attrs) => {
+        return (
+            <div className={cx('box')} tabIndex="-1" {...attrs}>
+                        {dataRender && (
+                            <PopperWrapper>
+                                {dataRender.map((item, index) => (
+                                    <NavItem key={index} data={item}>
+                                        {item.title}
+                                    </NavItem>
+                                ))}
+                            </PopperWrapper>
+                        )}
+             </div>
+        )
+    }
     const renderNavList = () => {
         return NAV_LIST.map((item, index) => (
             <Tippy
                 interactive
                 placement="bottom"
                 key={index}
-                render={(attrs) => (
-                    <div className={cx('box')} tabIndex="-1" {...attrs}>
-                        {item.children && (
-                            <PopperWrapper>
-                                {item.children.map((child, index) => (
-                                    <NavItem key={index} data={child}>
-                                        {child.title}
-                                    </NavItem>
-                                ))}
-                            </PopperWrapper>
-                        )}
-                    </div>
-                )}
+                render={(attrs) => renderTippy(item.children, attrs)}
             >
                 <div className={cx('cover')}>
                     <NavItem data={item} />
@@ -42,23 +47,23 @@ function Header() {
         ));
     };
 
+  
+
     return (
         <div className={cx('header')}>
-            {/* logo */}
 
             <a href="/" className={cx('left-content')}>
                 <img className={cx('logo')} src={images.logo} alt="logo" />
             </a>
 
-            {/* nav */}
             <div className={cx('center-content')}>
                 <ul className={cx('nav-list')}>{renderNavList()}</ul>
             </div>
 
-            {/*search & social & user */}
             <div className={cx('right-content')}>
+                <InputSearch/>
                 <div className={cx('cover')}>
-                    <Button to="/new" target="_blank" primary>
+                    <Button to="/new" target="_blank" customClass='primary'>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </Button>
                 </div>
@@ -71,7 +76,7 @@ function Header() {
                     <Button>Đăng ký</Button>
                 </div>
                 <div className={cx('cover')}>
-                    <Button>Đăng nhập</Button>
+                    <Button> Đăng nhập </Button>
                 </div>
             </div>
         </div>

@@ -6,10 +6,13 @@ import Button from '~/Component/Button';
 const cx = classNames.bind(styles);
 
 function NavItem({ data }) {
+    const {title, icon} =  data;
+    
     return (
         <li className={cx('nav-item')}>
-            <Button text rightIcon={data.icon ? data.icon : false}>
-                {data.title}
+            <Button >
+                {title} 
+                {icon}
             </Button>
         </li>
     );
