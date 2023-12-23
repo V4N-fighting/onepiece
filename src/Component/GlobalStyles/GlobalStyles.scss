@@ -1,0 +1,40 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Caramel&family=Caveat:wght@700&family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300&display=swap');
+
+:root {
+    --header-height: 80px;
+
+    --button-color: #282828;
+    --primary-color: #a34141;
+    --text-color-button: #fff;
+
+    --hover-color-button: #363636c0;
+    --hover-color-primary-button: blue;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Caramel', cursive;
+    font-family: 'Caveat', cursive;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    outline: none;
+}

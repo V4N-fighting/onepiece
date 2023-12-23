@@ -1,0 +1,38 @@
+.header {
+    width: 100%;
+    height: var(--header-height);
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    background: #101215;
+    padding: 0 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cover {
+    margin-left: 10px;
+}
+
+//logo
+
+.logo {
+    height: calc(var(--header-height) / 3 * 2);
+}
+
+//navigation
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+}
+
+// right content
+.right-content {
+    display: flex;
+}
+
+//tippy
